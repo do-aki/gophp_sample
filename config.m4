@@ -13,9 +13,9 @@ dnl [  --with-gophp             Include gophp support])
 
 dnl Otherwise use enable:
 
-dnl PHP_ARG_ENABLE(gophp, whether to enable gophp support,
-dnl Make sure that the comment is aligned:
-dnl [  --enable-gophp           Enable gophp support])
+PHP_ARG_ENABLE(gophp, whether to enable gophp support,
+  [  --enable-gophp           Enable gophp support]
+)
 
 if test "$PHP_GOPHP" != "no"; then
   dnl Write more examples of tests here...

@@ -39,5 +39,7 @@ ZEND_END_MODULE_GLOBALS(gophp)
 ZEND_TSRMLS_CACHE_EXTERN();
 #endif
 
+PHP_FUNCTION(go_fib);
+
 #endif	/* PHP_GOPHP_H */
 
