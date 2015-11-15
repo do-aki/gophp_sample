@@ -1,0 +1,13 @@
+// $Id$
+// vim:ft=javascript
+
+// If your extension references something external, use ARG_WITH
+// ARG_WITH("gophp", "for gophp support", "no");
+
+// Otherwise, use ARG_ENABLE
+// ARG_ENABLE("gophp", "enable gophp support", "no");
+
+if (PHP_GOPHP != "no") {
+	EXTENSION("gophp", "gophp.c", PHP_EXTNAME_SHARED, "/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1");
+}
+
