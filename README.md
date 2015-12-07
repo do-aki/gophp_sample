@@ -2,7 +2,7 @@ golang で php 拡張を作ってみるテスト
 
 # environment
 * CentOS release 6.7
-* PHP 7.0.0RC4
+* PHP 7.0.0RC7
 * go version go1.5.1 linux/amd64
 
 # build
