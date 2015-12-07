@@ -33,3 +33,5 @@ php -d extension=`pwd`/modules/gophp.so -r 'echo go_fib(40) . PHP_EOL;'  1.87s u
 
 ```
 
+# see also
+http://www.slideshare.net/do_aki/writing-php-extensions-in-golang
