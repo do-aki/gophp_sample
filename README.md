@@ -2,8 +2,8 @@ golang で php 拡張を作ってみるテスト
 
 # environment
 * CentOS release 6.7
-* PHP 7.0.0RC7
-* go version go1.5.1 linux/amd64
+* PHP 7.0.1
+* go version go1.5.2 linux/amd64
 
 # build
 
@@ -27,13 +27,14 @@ go build -p 1 -gcflags "-l" -buildmode=c-shared -o modules/gophp.so gophp.go exp
 # run
 
 ```
+$ export ZEND_DONT_UNLOAD_MODULES=1
 $ time php -d extension=`pwd`/modules/gophp.so -r 'echo go_fib(40) . PHP_EOL;'
 102334155
 php -d extension=`pwd`/modules/gophp.so -r 'echo go_fib(40) . PHP_EOL;'  1.87s user 0.03s system 99% cpu 1.909 total
 
 ```
 
-**note:segmentation fault in shutdown process sometimes……**
+(set ZEND_DONT_UNLOAD_MODULES=1 for avoid segmentation fault)
 
 # see also
 http://www.slideshare.net/do_aki/writing-php-extensions-in-golang
