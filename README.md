@@ -19,7 +19,7 @@ $ CGO_CFLAGS="-g -O0 -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -I. -DPHP_ATOM_INC \
 -I`php-config --include-dir`/ext \
 -I`php-config --include-dir`/ext/date/lib \
 -DHAVE_CONFIG_H -DCOMPILE_DL_GOPHP -fPIC -DPIC" \
-CGO_LDFLAGS="-Wl,--export-dynamic -Wl,--unresolved-symbols=ignore-all" \
+CGO_LDFLAGS="-Wl,--export-dynamic -Wl,--unresolved-symbols=ignore-all -Wl,-z,nodelete" \
 go build -p 1 -gcflags "-l" -buildmode=c-shared -o modules/gophp.so gophp.go export.go
 
 ```
@@ -27,14 +27,11 @@ go build -p 1 -gcflags "-l" -buildmode=c-shared -o modules/gophp.so gophp.go exp
 # run
 
 ```
-$ export ZEND_DONT_UNLOAD_MODULES=1
 $ time php -d extension=`pwd`/modules/gophp.so -r 'echo go_fib(40) . PHP_EOL;'
 102334155
 php -d extension=`pwd`/modules/gophp.so -r 'echo go_fib(40) . PHP_EOL;'  1.87s user 0.03s system 99% cpu 1.909 total
 
 ```
-
-(set ZEND_DONT_UNLOAD_MODULES=1 for avoid segmentation fault)
 
 # see also
 http://www.slideshare.net/do_aki/writing-php-extensions-in-golang
